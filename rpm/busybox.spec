@@ -38,6 +38,19 @@ Obsoletes: %{name}-docs
 %description doc
 Busybox user guide.
 
+%package symlinks-which
+Requires: %{name} = %{version}-%{release}
+Summary: Busybox replacements for which
+Provides: which = %{version}
+Conflicts: util-linux <= 2.33+git1
+
+%description symlinks-which
+Busybox is a single binary which includes versions of a large number
+of system commands, including a shell.  This package can be very
+useful for recovering from certain types of system failures,
+particularly those involving broken shared libraries. This
+is the symlink implementing which replacement.
+
 %prep
 %setup -q -n %{name}-%{version}/upstream
 #%patch0 -p1
@@ -55,6 +68,7 @@ make %{_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/bin
 install -m 755 busybox %{buildroot}/bin/busybox
+ln -s ../../bin/busybox %{buildroot}/usr/bin/which
 
 mkdir -p %{buildroot}/%{_docdir}/%{name}-%{version}
 install -m 644 -t %{buildroot}/%{_docdir}/%{name}-%{version} \
@@ -70,3 +84,6 @@ install -m 644 -t %{buildroot}/%{_docdir}/%{name}-%{version} \
 %defattr(-,root,root,-)
 %doc %{_docdir}/%{name}-%{version}
 
+%files symlinks-which
+%defattr(-,root,root,-)
+%{_bindir}/which
