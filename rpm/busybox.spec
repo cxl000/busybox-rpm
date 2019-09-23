@@ -12,7 +12,7 @@ Source2: busybox.config
 #Patch1:  0002-applets-Busybox-in-usr-bin-instead-of-bin.patch
 URL: https://github.com/cxl000/busybox-mer
 #BuildRequires: glibc-static
-BuildRequires: libselinux libsepol
+BuildRequires: libselinux-devel libsepol-devel
 BuildRequires: pcre
 
 Obsoletes: time <= 1.7
