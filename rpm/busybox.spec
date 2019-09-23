@@ -67,6 +67,7 @@ make %{_smp_mflags}
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/bin
+mkdir -p %{buildroot}/usr/bin
 install -m 755 busybox %{buildroot}/bin/busybox
 ln -s ../../bin/busybox %{buildroot}/usr/bin/which
 
