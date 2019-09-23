@@ -54,8 +54,7 @@ make %{_smp_mflags}
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/bin
-mkdir -p %{buildroot}/usr/bin
-install -m 755 busybox %{buildroot}/usr/bin/busybox
+install -m 755 busybox %{buildroot}/bin/busybox
 
 mkdir -p %{buildroot}/%{_docdir}/%{name}-%{version}
 install -m 644 -t %{buildroot}/%{_docdir}/%{name}-%{version} \
@@ -65,7 +64,7 @@ install -m 644 -t %{buildroot}/%{_docdir}/%{name}-%{version} \
 %defattr(-,root,root,-)
 %license LICENSE
 /bin/busybox
-%{_bindir}/busybox
+#%{_bindir}/busybox
 
 %files doc
 %defattr(-,root,root,-)
