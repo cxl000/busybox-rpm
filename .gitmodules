@@ -1,0 +1,4 @@
+[submodule "upstream"]
+	path = upstream
+	url = https://git.busybox.net/busybox
+	branch = 1_31_stable
